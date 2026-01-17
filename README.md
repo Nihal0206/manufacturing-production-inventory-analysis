@@ -1,168 +1,157 @@
-# Data Analysis of Bicycle Manufacturing Company Using Python, SQL and Power BI
+# Data Analysis of Bicycle Manufacturing Company
+### Production & Inventory Analytics using Python, SQL & Power BI
+
+---
 
 ## Overview
 
-This project goes through the **Production and Inventory Analysis** of the Microsoft **AdventureWorks** Database.  
-AdventureWorks is a fictional bicycle manufacturing company that contains standard transactional data from an
-**Enterprise Resource Planning (ERP)** system.
+This project presents a **Production and Inventory Analysis** using the Microsoft **AdventureWorks** sample database.  
+AdventureWorks is a fictional bicycle manufacturing company that represents real-world **ERP (Enterprise Resource Planning)** data.
 
-The database includes multiple business scenarios such as **Human Resources, Product Management,
-Manufacturing, Purchasing, Inventory, Sales, and Administration**.  
-This analysis focuses specifically on the **Manufacturing and Inventory** domain.
+The analysis focuses on the **Manufacturing and Inventory** domain with the objective of identifying:
+- Production inefficiencies
+- Major waste cost drivers
+- Inventory utilization and turnover issues
 
-**Microsoft Power BI** has been used to build an interactive dashboard by connecting to **SQL Server**.
+An **interactive Power BI dashboard** is built by connecting to **SQL Server**, supported by data modeling and analytics.
 
 ---
 
 ## Data Source
 
-The dataset used in this project is the **AdventureWorks sample database** provided by Microsoft for
-learning and analytical purposes.
+- **Dataset:** Microsoft AdventureWorks Sample Database  
+- **Domain Used:** Manufacturing & Inventory  
+- **Purpose:** Learning, analytics, and portfolio demonstration
 
 ---
 
 ## Data Model
 
-Defining an effective data structure is essential for building efficient dashboards.
-A **Star Schema** data model was implemented to improve query performance and simplify analysis.
+A **Star Schema** data model was implemented to improve performance and simplify analytical reporting.
 
-![Data Model](images/DataModel.png)
+![Data Model](images/data_model.png)
 
-### Tables used in the model
-
+### Tables Used
 - **Production Location** – Assembly locations and manufacturing stages  
-- **Production Product** – Product details such as size, weight, and cost  
-- **Production ProductCategory** – High-level product categories  
-- **Production ProductSubcategory** – Detailed product subcategories  
-- **Production ProductInventory** – Inventory quantity and stock data  
-- **Production ScrapReason** – Manufacturing waste and defect reasons  
-- **Production WorkOrder** – Production transaction records  
-- **Production WorkOrderRouting** – Production scheduling and routing details  
-- **Sales SalesOrderDetail** – Transactional sales data  
+- **Production Product** – Product attributes such as size, weight, and cost  
+- **Product Category** – High-level product grouping  
+- **Product Subcategory** – Detailed product classification  
+- **Product Inventory** – Inventory quantity and stock details  
+- **Scrap Reason** – Manufacturing waste reasons  
+- **Work Order** – Production transactions  
+- **Work Order Routing** – Production scheduling data  
+- **Sales Order Detail** – Sales transaction data  
+- **Calendar** – Custom fiscal calendar (October–September)
 
 ---
 
-## Built With
+## Tools & Technologies
 
-- **Python**  
-- **Power BI**  
-- **SQL Server**
+- **SQL Server** – Data storage, joins, and extraction  
+- **Power BI** – Data modeling, DAX measures, and dashboards  
+- **Python** – Data preprocessing and validation  
+- **DAX** – KPI creation and fiscal calendar logic  
 
 ---
 
-## Analysis
+## Dashboard Analysis
 
 ### Main Page
 
-The dashboard is designed with an **app-like navigation interface**.
-The main page provides navigation to **Production Overview** and **Inventory Overview** sections.
+The dashboard is designed with an **app-like navigation interface**, allowing users to move between Production and Inventory views.
 
-![Main Page](images/Main Page.png)
-
----
-
-### Production Overview
-
-![Production Overview Page](images/Production Overview Page.png)
-
-The dashboard follows **fiscal year reporting**.
-A custom **date table using DAX** was created to generate fiscal year segregation.
-
-**Fiscal Year Assumption:**  
-October 1st to September 30th.
-
-This page provides a high-level overview of manufacturing performance using custom KPIs.
-
-![Production Overview KPI](images/Production Overview KPI.png)
-
-#### Charts on the page
-
-**Cumulative Multiline Chart**  
-Shows cumulative production totals by fiscal year and helps identify manufacturing bottlenecks.
-
-**Donut Chart – Actual Cost by Assembly Location**  
-Displays cost distribution across different assembly stages.
-
-**Waste Cost by Year**  
-Shows the trend of manufacturing waste cost over time.
-
-![Waste Cost by Year](images/Waste cost by the Year.png)
+![Main Page](images/main_page.png)
 
 ---
 
-### Category Analysis
+## Production Overview
 
-The Category Analysis page enables deeper investigation into product-level and component-level
-manufacturing issues.
+Provides a high-level summary of manufacturing performance.  
+A **custom fiscal calendar (October–September)** was created using DAX.
 
-![Production Category Analysis](images/Production Category Analysis.png)
+![Production Overview Page](images/production_overview_page.png)
 
-#### Pareto Charts
+### Key KPIs
+- Fiscal Year-to-Date Production  
+- Fiscal Year-to-Date Waste Cost  
+- Average Production Lead Time  
+- On-Time Production Percentage  
 
-Pareto charts are used to identify the **most significant components and products**
-contributing to production volume and waste cost.
+![Production Overview KPI](images/production_overview_kpi.png)
 
-![Pareto Charts](images/Pareto_Charts.png)
+---
 
-#### Waste Cost – Product Matrix
+## Category Analysis
 
-This matrix visual highlights waste cost by:
+Enables deeper investigation into **product-level and component-level production issues**.
+
+![Production Category Analysis](images/Production%20Category%20Analysis.png)
+
+### Pareto Charts
+
+Used to identify the **most significant components and products** contributing to production volume and waste cost.
+
+![Pareto Charts](images/Pareto_Charts.jpg)
+
+### Waste Cost – Product Matrix
+
+Breaks down waste cost by:
 - Waste reason  
 - Bikes vs Components  
 
-Conditional formatting emphasizes high-cost defect areas.
+Conditional formatting highlights high-cost defect areas.
 
-![Waste Cost Matrix](images/Waste_Cost_Matrix.png)
+![Waste Cost Matrix](images/Waste_Cost_Matrix.jpg)
 
-#### On-Time Production by Category
+### On-Time Production by Category
 
-Displays the percentage of products completed on time across different categories.
+Shows the percentage of products completed on time across categories.
 
-![On-Time Production by Category](images/On_time_production_by_category.png)
+![On-Time Production by Category](images/On_time_production_by_category.jpg)
 
 ---
 
-### Inventory Overview
+## Inventory Overview
 
-The Inventory Overview analyzes stock utilization and efficiency.
-Due to limited supply chain data, the analysis assumes a **single inventory location**.
+Focuses on inventory utilization across assembly locations.
 
-![Inventory Data Overview](images/Inventory data overview.png)
+![Inventory Data Overview](images/Inventory%20data%20overview.png)
 
-#### Inventory KPIs
-
-![Inventory Overview KPI](images/Inventory Overview KPI.png)
-
+### Inventory KPIs
 - Inventory Quantity  
 - Inventory Value  
 - Inventory Turnover  
 
-#### Inventory Analysis Charts
+![Inventory Overview KPI](images/inventory_overview_kpi.png)
 
-**Inventory Quantity & Value by Assembly Location**  
-Shows where most inventory value is held.
+### Inventory Turnover Analysis
 
-**Inventory Turnover Multiline Chart**  
-Compares inventory turnover across fiscal years.
+Compares inventory turnover across fiscal years to support better production planning.
 
-![Inventory Turnover](images/Inventory_turnover_chart.png)
+![Inventory Turnover](images/Inventory_tunrover_chart.jpg)
+
+---
+
+## Key Insights
+
+- Pareto analysis identified components driving most production volume  
+- Waste analysis highlighted major defect reasons increasing cost  
+- Inventory analysis revealed overstocked assembly stages  
+- On-time production analysis exposed scheduling inefficiencies  
 
 ---
 
 ## Conclusion
 
-This project demonstrates how **data analytics and visualization** can be applied to
-manufacturing data to:
-
-- Identify production inefficiencies  
+This project demonstrates how **data analytics and visualization** can:
+- Identify manufacturing inefficiencies  
 - Reduce waste cost  
 - Improve inventory utilization  
-- Support data-driven decision making  
+- Support data-driven decision-making  
 
 ---
 
 ## Disclaimer
 
-This project is created for **educational and portfolio purposes** using the publicly available
-**AdventureWorks** dataset.  
-All analysis, dashboards, and documentation have been independently developed.
+This project is created for **educational and portfolio purposes** using the publicly available **Microsoft AdventureWorks** sample dataset.  
+All analysis and insights are independently developed.
